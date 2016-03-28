@@ -212,10 +212,22 @@ Go through all of the following questions and think about how you would respond 
 var foo = 10 + '20';
 ```
 
+*1020*
+
 *Question: How would you make this work?*
 ```javascript
 add(2, 5); // 7
 add(2)(5); // 7
+```
+```javascript
+function add (num1, num2){
+	return result = num1 + num2;
+} 
+function add (num1) {
+	return function(num2) {
+		return num1 + num2;	
+	};
+}
 ```
 
 *Question: What value is returned from the following statement?*
@@ -223,7 +235,10 @@ add(2)(5); // 7
 "i'm a lasagna hog".split("").reverse().join("");
 ```
 
+*goh angasal a m'i*
+
 *Question: What is the outcome of the two alerts below?*
+
 ```javascript
 var foo = "Hello";
 (function() {
@@ -233,6 +248,10 @@ var foo = "Hello";
 alert(foo + bar);
 ```
 
+*"Hello World"*
+
+*error, bar undefined*
+
 *Question: What is the value of `foo.length`?*
 ```javascript
 var foo = [];
@@ -240,12 +259,16 @@ foo.push(1);
 foo.push(2);
 ```
 
+*Length of 2*
+
 *Question: What is the value of `foo.x`?*
 ```javascript
 var foo = {n: 1};
 var bar = foo;
 foo.x = foo = {n: 2};
 ```
+
+*undefined*
 
 *Question: What does the following code print?*
 ```javascript
@@ -255,6 +278,8 @@ setTimeout(function() {
 }, 0);
 console.log('three');
 ```
+
+*one three two*
 
 ## Fun Questions:
 
