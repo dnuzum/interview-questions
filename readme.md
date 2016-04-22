@@ -221,12 +221,17 @@ add(2)(5); // 7
 ```
 ```javascript
 function add (num1, num2){
-	return result = num1 + num2;
+    return result = num1 + num2;
 } 
 function add (num1) {
-	return function(num2) {
-		return num1 + num2;	
-	};
+    return function(num2) {
+        return num1 + num2; 
+    };
+}
+<!-- or for number 2 -->
+if(y is undefined) return x + y;
+    return function(y) {
+        return x + y
 }
 ```
 
@@ -291,3 +296,102 @@ console.log('three');
 * *I've been tinkering around with Raspberry Pi off and on. Before I had kids I was an avid photographer. I love playing with my kids, craft breweries, Seattle Sports, and International Soccer.*
 * How do you like your coffee?
 * *I don't drink coffee any longer. I previous drank way too much. I now prefer Black tea. Market Spice is my local favorite souce. Usually straight black, but occasionally with a bit of sugar and lemon and/or honey.*
+
+## Additional Whiteboarding from Brian
+
+*Multiply with only the add operator*
+
+```javascript
+function multiple(x, y) {
+    if (x===0 || y===0) return 0;
+    for (var i = 1; i<y; i++) {
+        x+=x;
+    }
+    return x;
+};
+```
+
+*Divide with only the add operator*
+
+```javascript
+function divide(x,y) {
+    if (y===0) throw "error";
+    if (y===1) return x;
+    var count = 0;
+    var temp = y
+    while(x>=temp){
+        temp += y
+        count ++
+    }
+    return count
+};
+
+brian
+function divide (x,y) {
+    if (y===0) throw "divide by 0";
+    var count = 0, pacman = 0
+    while (pacman + y <= x) {
+        count ++;
+        pacman +=y;
+    }
+    return count;
+};
+
+```
+
+*Fibonnaci Sequence*
+```javascript
+1, 1, 2, 3, 5, 8, 13
+
+function fib(n) {
+    var x=0
+    var last=1
+    var last2 = 0
+    for (var i=0; i<n; i++){
+        x = last+last2
+        last2 = last
+        last = x
+    }
+    return x;
+};
+
+Recursively!
+
+function fib(n){
+    if (n == 0) return 0
+    if (n == 1) return 1
+    return fib(n-1) + fib(n-2)
+};
+
+```
+
+*Use Ruby or Java or an object oriented language to design a jukebox*
+```ruby
+class jukebox
+    cds:[CD], stations[RadioStations]
+    now_playing: Track or RadioStation
+    <!-- now_playing would need polymorphism -->
+    def get_display
+        @now_playing.title (track title would work here, but station title wouldnt)
+        @now_playing.title if @now_playing.class == Track
+        @now_playing.station_title if @now_playing.class == RadioStation
+    end
+end
+
+class CD
+    tracks:[Tracks], artist:string
+end
+
+class Track
+    runtime:int, artists[], title:string
+end
+
+class RadioStation
+    FREQ={:am=>0, :fm=>1}
+    station_title:string, station_nation:int, frequency: int
+
+    def tune(freq)
+        frequency = FREQ[freq]
+    end
+end
+```
